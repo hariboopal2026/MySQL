@@ -200,3 +200,228 @@ select * from Accounts order by balance desc limit 2;
 select * from Accounts order by balance desc limit 1 offset 1;
 
 select * from Accounts;
+
+
+
+
+
+
+
+
+
+use products;
+select * from prod;
+
+select sum(price) as Total_Amount from prod;
+select avg(price) as Average_Amount from prod;
+select count(price) as "Total number of products" from prod;
+select min(price) as Min_Amount from prod;
+select max(price) as Max_Amount from prod;
+
+
+select category,sum(price) as Total_Amount from prod group by category;
+select category,avg(price) as Total_Amount from prod group by category;
+select category,count(price) as Total_Amount from prod group by category;
+select category,max(price) as Total_Amount from prod group by category;
+select category,min(price) as Total_Amount from prod group by category;
+
+
+select category,sum(price) as TP from prod group by category having
+sum(price)>40000;
+
+select category,sum(price) as TP from prod group by category having
+TP<40000;
+
+select category,count(*) as Total_Amount from prod group by category;
+
+delete from prod where prod_id='P005';
+
+select category,count(*) as TC from prod group by category having
+TC=2;
+
+
+-- Math Functions
+select sqrt(81);
+select ceil(9.2);
+select floor(9.2);
+select round(1.23456,2);
+select round(1.2978,2);
+select power(5,2);
+select pow(2,3);
+
+select abs(-5);
+
+select 5%2;
+select mod(6,4) as 'modulous value';
+
+
+-- String Functions
+
+select length('Hello');
+select upper("sql");
+select lower("SQl");
+
+select substring("Microsoft Excel",3);
+-- Partname
+select substring("Microsoft Excel",1,5);
+select right("Microsoft Excel",4);
+select left("Microsoft Excel",4);
+
+-- select " hello";
+select trim("         hello");
+select reverse("Hai");
+
+-- String
+select concat("Hari","Boopal");
+select concat("Hari",' ' ,"Boopal");
+select replace("MySQL","M","K");
+
+-- Math
+select sin(90);
+select cos(90);
+select tan(90);
+select log10(100); 
+select log2(8);
+
+SELECT CONCAT(
+UPPER(LEFT(empname, 1)),
+LOWER(RIGHT(empname, LENGTH(empname) - 1))
+) AS capitalized_name
+FROM emp;
+
+SELECT CONCAT(
+UPPER(LEFT("hari", 1)),
+LOWER(RIGHT("hari", LENGTH("hari") - 1))
+) AS capitalized_name;
+
+
+
+
+
+
+select now();
+select curdate();
+select curtime();
+select year(curdate());
+select month(curdate());
+select day(curdate());
+select hour(now());
+select minute(now());
+select second(now());
+select date_add(curdate(),interval 7 day);
+select date_add(curdate(),interval 7 month);
+select date_add(curdate(),interval 3 year);
+select date_add(curdate(),interval -7 day);
+select date_add(curdate(),interval -7 month);
+select date_add(curdate(),interval -3 year);
+select date_sub(curdate(),interval 3 day);
+
+
+select date_format(curdate(),'%d-%m-%Y');
+select dayname(curdate());
+select monthname(curdate());
+
+
+
+SELECT CONCAT(
+UPPER(LEFT(empname, 1)),
+LOWER(RIGHT(empname, LENGTH(empname) - 1))
+) AS capitalized_name
+FROM emp;
+
+
+
+
+select monthname(curdate());
+select dayname(curdate());
+
+select timestampdiff(year,'2007-09-19',curdate());
+select timestampdiff(month,'2007-09-19',curdate());
+select timestampdiff(day,'2007-09-19',curdate());
+
+-- Date Functions - These functions analyze dates and time.
+SELECT
+CustomerID,
+YEAR(DateOfBirth) AS BirthYear
+FROM customers;
+
+SELECT
+CustomerID,
+month(DateOfBirth) AS BirthMonth
+FROM customers;
+
+SELECT
+CustomerID,
+DATEDIFF(CURDATE(),DateOfBirth) AS Days
+FROM customers;
+
+-- Comparision Functions
+-- Categorize customers as Adult or Young based on their birth year.
+
+SELECT
+    FirstName,
+    DateOfBirth,
+    IF(YEAR(DateOfBirth) <= 1995,
+       'Adult',
+       'Young') AS Category
+FROM Customers;
+
+select * from customers;
+
+update customers set phone=null where customerID=103;
+select * from customers;
+
+select firstname,ifnull(phone,"Not Available") as Phone from customers;
+
+select max(DateofBirth) from customers;
+
+select greatest(DateofBirth,2) from customers;
+
+select * from customers;
+
+-- select greatest("Hello","Hi","Helcome");
+select least("Hello","Hi","Welcome");
+Select ascii('$');
+
+select greatest('1999-09-08','1999-12-04');
+select least('1999-09-08','1999-12-04');
+
+SELECT
+    FirstName,
+    NULLIF(FirstName,'Priyaa') AS Result
+FROM Customers;
+
+select * from customers;
+
+
+
+
+select * from customers;
+select * from Accounts;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select empname,timestampdiff(month,doj,now()) as Month from employee;
+select empname,timestampdiff(year,doj,now()) as Year from employee;
+select empname,timestampdiff(day,doj,now()) as Days from employee;
+
+select timestampdiff(day,'1997-05-03',now());
